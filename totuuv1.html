@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gia Tiến - Free Fire Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255, 126, 95, 0.5));
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(255, 126, 95, 0.3);
+        }
+        
+        .header p {
+            color: #a0a0a0;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .login-section, .system-section, .support-section, .admin-section {
+            background: rgba(30, 30, 46, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .system-section, .support-section, .admin-section {
+            display: none;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #ff7e5f;
+            border-bottom: 2px solid rgba(255, 126, 95, 0.3);
+            padding-bottom: 12px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(20, 20, 35, 0.8);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #ff7e5f;
+            box-shadow: 0 0 0 3px rgba(255, 126, 95, 0.2);
+            background: rgba(25, 25, 45, 0.9);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn-login {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: #fff;
+            flex: 1;
+        }
+        
+        .btn-register {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            flex: 1;
+        }
+        
+        .btn-support {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: #fff;
+            width: 100%;
+        }
+        
+        .btn-admin {
+            background: linear-gradient(45deg, #9c27b0, #e91e63);
+            color: #fff;
+        }
+        
+        .btn-vip {
+            background: linear-gradient(45deg, #ffeb3b, #ff9800);
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .vip-section {
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 126, 95, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 126, 95, 0.2);
+        }
+        
+        .vip-section p {
+            margin-bottom: 12px;
+            color: #ffb8a3;
+            font-size: 1rem;
+        }
+        
+        .feature-list {
+            margin-top: 25px;
+        }
+        
+        .feature-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 18px 15px;
+        }
+        
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .feature-icon {
+            font-size: 1.4rem;
+        }
+        
+        .feature-description {
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            margin-top: 5px;
+            max-width: 300px;
+        }
+        
+        .feature-status {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .status-off {
+            background: rgba(255, 80, 80, 0.15);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 80, 80, 0.3);
+        }
+        
+        .status-on {
+            background: rgba(80, 255, 80, 0.15);
+            color: #6bff6b;
+            border: 1px solid rgba(80, 255, 80, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(80, 255, 80, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(80, 255, 80, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(80, 255, 80, 0); }
+        }
+        
+        .performance-section {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(20, 20, 35, 0.6);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .performance-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .performance-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ff7e5f;
+        }
+        
+        .performance-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #6bff6b;
+        }
+        
+        .performance-bar {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .performance-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            border-radius: 6px;
+            width: 0%;
+            transition: width 0.8s ease;
+        }
+        
+        .performance-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #a0a0a0;
+        }
+        
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px 20px;
+            background: rgba(255, 126, 95, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 126, 95, 0.2);
+        }
+        
+        .user-welcome {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .user-name {
+            color: #ff7e5f;
+            font-weight: bold;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 80, 80, 0.15);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 80, 80, 0.3);
+        }
+        
+        .support-btn {
+            background: rgba(0, 198, 255, 0.15);
+            color: #00c6ff;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+        }
+        
+        .admin-btn {
+            background: rgba(156, 39, 176, 0.15);
+            color: #9c27b0;
+            border: 1px solid rgba(156, 39, 176, 0.3);
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .support-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .support-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .support-icon {
+            color: #ff7e5f;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+            font-weight: 500;
+        }
+        
+        .success {
+            background: rgba(80, 255, 80, 0.15);
+            color: #6bff6b;
+            border: 1px solid rgba(80, 255, 80, 0.3);
+        }
+        
+        .error {
+            background: rgba(255, 80, 80, 0.15);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 80, 80, 0.3);
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .forgot-link {
+            color: #ff7e5f;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .forgot-link:hover {
+            color: #ff9a3d;
+        }
+        
+        .ai-support {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 198, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+        }
+        
+        .ai-response {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(20, 20, 35, 0.6);
+            border-radius: 10px;
+            border-left: 4px solid #00c6ff;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .admin-panel {
+            margin-top: 20px;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .admin-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-tab.active {
+            border-bottom: 2px solid #9c27b0;
+            color: #9c27b0;
+        }
+        
+        .admin-content {
+            display: none;
+        }
+        
+        .admin-content.active {
+            display: block;
+        }
+        
+        .user-list, .key-list {
+            margin-top: 15px;
+        }
+        
+        .user-item, .key-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: rgba(20, 20, 35, 0.5);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .vip-code-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 235, 59, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 235, 59, 0.3);
+        }
+        
+        .code-output {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(20, 20, 35, 0.8);
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 100px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo">🔥</div>
+                <div>
+                    <h1>GIA TIẾN FREE FIRE</h1>
+                    <p>Hệ Thống Hỗ Trợ Free Fire Cao Cấp</p>
+                </div>
+            </div>
+            <div>
+                <span class="badge">VIP</span>
+                <span class="badge">PRO</span>
+                <span class="badge">BẢO MẬT</span>
+                <span class="badge">AI SUPPORT</span>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="login-section" id="loginSection">
+                <h2 class="section-title">ĐĂNG NHẬP HỆ THỐNG</h2>
+                
+                <div id="message" class="message"></div>
+                
+                <div class="form-group">
+                    <label for="username">Tài khoản Free Fire</label>
+                    <input type="text" id="username" placeholder="Nhập ID tài khoản của bạn">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" id="password" placeholder="Nhập mật khẩu">
+                </div>
+                
+                <div class="forgot-password">
+                    <span class="forgot-link" id="forgotPasswordLink">Quên mật khẩu?</span>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-register" id="registerBtn">ĐĂNG KÝ</button>
+                    <button class="btn btn-login" id="loginBtn">ĐĂNG NHẬP</button>
+                </div>
+                
+                <div class="vip-section">
+                    <p>Sử dụng VIP Key để trải nghiệm cao cấp</p>
+                    <div class="form-group">
+                        <input type="text" id="vipKey" placeholder="Nhập VIP Key (nếu có)">
+                    </div>
+                    <button class="btn btn-login" id="vipLoginBtn" style="width: 100%;">ĐĂNG NHẬP VIP</button>
+                </div>
+            </div>
+            
+            <div class="system-section" id="systemSection">
+                <div class="user-info">
+                    <div class="user-welcome">Chào mừng, <span class="user-name" id="userDisplayName">Chiến Binh</span>!</div>
+                    <div class="user-actions">
+                        <div class="action-btn support-btn" id="supportSectionBtn">HỖ TRỢ AI</div>
+                        <div class="action-btn admin-btn" id="adminSectionBtn" style="display: none;">QUẢN TRỊ</div>
+                        <div class="action-btn logout-btn" id="logoutBtn">ĐĂNG XUẤT</div>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">TÍNH NĂNG HỖ TRỢ</h2>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div>
+                            <div class="feature-name">
+                                <span class="feature-icon">🎯</span>
+                                HEADSHOT PRO
+                            </div>
+                            <div class="feature-description">Tối ưu hóa độ chính xác headshot, tăng tỷ lệ bắn trúng mục tiêu</div>
+                        </div>
+                        <div class="feature-status status-off" data-feature="headshot">TẮT</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div>
+                            <div class="feature-name">
+                                <span class="feature-icon">🛡️</span>
+                                ANTI-RECOIL
+                            </div>
+                            <div class="feature-description">Giảm độ giật vũ khí, tăng độ ổn định khi bắn liên thanh</div>
+                        </div>
+                        <div class="feature-status status-off" data-feature="recoil">TẮT</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div>
+                            <div class="feature-name">
+                                <span class="feature-icon">⚡</span>
+                                FPS BOOST
+                            </div>
+                            <div class="feature-description">Tăng tốc độ khung hình, game chạy mượt mà hơn</div>
+                        </div>
+                        <div class="feature-status status-off" data-feature="fps">TẮT</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div>
+                            <div class="feature-name">
+                                <span class="feature-icon">🔊</span>
+                                AUDIO ENHANCE
+                            </div>
+                            <div class="feature-description">Khuếch đại âm thanh bước chân, phát hiện kẻ địch từ xa</div>
+                        </div>
+                        <div class="feature-status status-off" data-feature="audio">TẮT</div>
+                    </div>
+                </div>
+                
+                <div class="vip-code-section">
+                    <h3 style="color: #ffeb3b; margin-bottom: 15px;">🎁 CHẠY CODE VIP</h3>
+                    <div class="form-group">
+                        <label for="vipCode">Chọn tính năng VIP để chạy code:</label>
+                        <select id="vipCode">
+                            <option value="">-- Chọn tính năng VIP --</option>
+                            <option value="headshot">HEADSHOT PRO - Code nâng cao</option>
+                            <option value="recoil">ANTI-RECOIL - Code siêu giảm giật</option>
+                            <option value="fps">FPS BOOST - Code tối ưu cao</option>
+                            <option value="audio">AUDIO ENHANCE - Code âm thanh VIP</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-vip" id="runVipCodeBtn" style="width: 100%;">🚀 CHẠY CODE VIP</button>
+                    <div class="code-output" id="vipCodeOutput"></div>
+                </div>
+                
+                <div class="performance-section">
+                    <div class="performance-header">
+                        <div class="performance-title">HIỆU SUẤT HỆ THỐNG</div>
+                        <div class="performance-value" id="performanceValue">45%</div>
+                    </div>
+                    <div class="performance-bar">
+                        <div class="performance-fill" id="performanceFill"></div>
+                    </div>
+                    <div class="performance-stats">
+                        <div>Tính năng đang hoạt động: <span id="activeFeatures">0</span>/4</div>
+                        <div>Trạng thái: <span id="systemStatus">ỔN ĐỊNH</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="support-section" id="supportSection">
+                <h2 class="section-title">🤖 HỖ TRỢ AI 24/7</h2>
+                
+                <div class="ai-support">
+                    <div class="form-group">
+                        <label for="aiQuestion">Câu hỏi của bạn về Free Fire:</label>
+                        <textarea id="aiQuestion" placeholder="Mô tả vấn đề bạn gặp phải hoặc câu hỏi cần hỗ trợ..."></textarea>
+                    </div>
+                    <button class="btn btn-support" id="askAiBtn">GỬI CÂU HỎI CHO AI</button>
+                    <div class="ai-response" id="aiResponse">
+                        <!-- Phản hồi AI sẽ hiển thị ở đây -->
+                    </div>
+                </div>
+                
+                <div class="performance-section">
+                    <h3 style="color: #00c6ff; margin-bottom: 15px;">📞 HỖ TRỢ TRỰC TIẾP</h3>
+                    <div class="support-info">
+                        <div class="support-item">
+                            <span class="support-icon">📞</span>
+                            <span>Hotline: 0833863315</span>
+                        </div>
+                        <div class="support-item">
+                            <span class="support-icon">💬</span>
+                            <span>Zalo: Gia Tiến</span>
+                        </div>
+                        <div class="support-item">
+                            <span class="support-icon">🔗</span>
+                            <span>Facebook: Gia Tiến</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="admin-section" id="adminSection">
+                <div class="user-info">
+                    <div class="user-welcome">Quản trị viên: <span class="user-name" id="adminDisplayName">Admin</span></div>
+                    <div class="user-actions">
+                        <div class="action-btn support-btn" id="backToSystemBtn">QUAY LẠI</div>
+                        <div class="action-btn logout-btn" id="adminLogoutBtn">ĐĂNG XUẤT</div>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">⚙️ QUẢN LÝ HỆ THỐNG</h2>
+                
+                <div class="admin-panel">
+                    <div class="admin-tabs">
+                        <div class="admin-tab active" data-tab="users">Quản lý Người dùng</div>
+                        <div class="admin-tab" data-tab="keys">Quản lý VIP Keys</div>
+                        <div class="admin-tab" data-tab="stats">Thống kê</div>
+                    </div>
+                    
+                    <div class="admin-content active" id="users-content">
+                        <div class="form-group">
+                            <label for="newUsername">Thêm người dùng mới</label>
+                            <input type="text" id="newUsername" placeholder="Tên người dùng">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="newPassword" placeholder="Mật khẩu">
+                        </div>
+                        <button class="btn btn-admin" id="addUserBtn">THÊM NGƯỜI DÙNG</button>
+                        
+                        <div class="user-list" id="userList">
+                            <!-- Danh sách người dùng sẽ được thêm bằng JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="admin-content" id="keys-content">
+                        <div class="form-group">
+                            <label for="newKey">Thêm VIP Key mới</label>
+                            <input type="text" id="newKey" placeholder="Nhập VIP Key mới">
+                        </div>
+                        <button class="btn btn-admin" id="addKeyBtn">THÊM KEY</button>
+                        
+                        <div class="key-list" id="keyList">
+                            <!-- Danh sách key sẽ được thêm bằng JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="admin-content" id="stats-content">
+                        <div class="performance-section">
+                            <h3 style="color: #9c27b0; margin-bottom: 15px;">📊 THỐNG KÊ HỆ THỐNG</h3>
+                            <div class="performance-stats">
+                                <div>Tổng người dùng: <span id="totalUsers">0</span></div>
+                                <div>VIP Keys: <span id="totalKeys">0</span></div>
+                            </div>
+                            <div class="performance-stats">
+                                <div>Tính năng sử dụng nhiều: <span id="popularFeature">HEADSHOT PRO</span></div>
+                                <div>Thời gian hoạt động: <span id="uptime">24h</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div>© 2025 GIA TIẾN FREE FIRE - Phiên bản Premium</div>
+            <div class="support-info">
+                <div class="support-item">
+                    <span class="support-icon">🤖</span>
+                    <span>AI Support 24/7</span>
+                </div>
+                <div class="support-item">
+                    <span class="support-icon">⚡</span>
+                    <span>Hệ thống tự động</span>
+                </div>
+                <div class="support-item">
+                    <span class="support-icon">🔒</span>
+                    <span>Bảo mật cao cấp</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tài khoản mặc định
+        const defaultAccounts = [
+            { username: 'admin', password: 'admin123', isAdmin: true },
+            { username: 'user', password: 'user123', isAdmin: false },
+            { username: 'giatien', password: 'freefire', isAdmin: false }
+        ];
+        
+        // VIP Keys mặc định
+        const defaultVipKeys = ['VIP123', 'VIP456', 'VIP789', 'GIA_TIEN_VIP'];
+        
+        // Lấy dữ liệu từ localStorage hoặc sử dụng mặc định
+        let accounts = JSON.parse(localStorage.getItem('giatienAccounts')) || defaultAccounts;
+        let vipKeys = JSON.parse(localStorage.getItem('giatienVipKeys')) || defaultVipKeys;
+        
+        // Trạng thái các tính năng
+        let featureStates = JSON.parse(localStorage.getItem('giatienFeatures')) || {
+            headshot: false,
+            recoil: false,
+            fps: false,
+            audio: false
+        };
+        
+        // DOM Elements
+        const loginSection = document.getElementById('loginSection');
+        const systemSection = document.getElementById('systemSection');
+        const supportSection = document.getElementById('supportSection');
+        const adminSection = document.getElementById('adminSection');
+        const messageDiv = document.getElementById('message');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const vipKeyInput = document.getElementById('vipKey');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const vipLoginBtn = document.getElementById('vipLoginBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+        const supportSectionBtn = document.getElementById('supportSectionBtn');
+        const adminSectionBtn = document.getElementById('adminSectionBtn');
+        const backToSystemBtn = document.getElementById('backToSystemBtn');
+        const userDisplayName = document.getElementById('userDisplayName');
+        const adminDisplayName = document.getElementById('adminDisplayName');
+        const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+        const performanceValue = document.getElementById('performanceValue');
+        const performanceFill = document.getElementById('performanceFill');
+        const activeFeatures = document.getElementById('activeFeatures');
+        const systemStatus = document.getElementById('systemStatus');
+        
+        // AI Support Elements
+        const aiQuestion = document.getElementById('aiQuestion');
+        const askAiBtn = document.getElementById('askAiBtn');
+        const aiResponse = document.getElementById('aiResponse');
+        
+        // VIP Code Elements
+        const vipCode = document.getElementById('vipCode');
+        const runVipCodeBtn = document.getElementById('runVipCodeBtn');
+        const vipCodeOutput = document.getElementById('vipCodeOutput');
+        
+        // Admin Elements
+        const adminTabs = document.querySelectorAll('.admin-tab');
+        const adminContents = document.querySelectorAll('.admin-content');
+        const addUserBtn = document.getElementById('addUserBtn');
+        const newUsername = document.getElementById('newUsername');
+        const newPassword = document.getElementById('newPassword');
+        const userList = document.getElementById('userList');
+        const addKeyBtn = document.getElementById('addKeyBtn');
+        const newKey = document.getElementById('newKey');
+        const keyList = document.getElementById('keyList');
+        const totalUsers = document.getElementById('totalUsers');
+        const totalKeys = document.getElementById('totalKeys');
+        const popularFeature = document.getElementById('popularFeature');
+        const uptime = document.getElementById('uptime');
+        
+        // Code VIP cho từng tính năng
+        const vipCodes = {
+            headshot: `// 🎯 HEADSHOT PRO VIP CODE
+function activateHeadshotPro() {
+    // Kích hoạt chế độ headshot nâng cao
+    aimAssist.precisionMode = "extreme";
+    targetTracking.sensitivity = 0.95;
+    crosshairOptimization.enable();
+    
+    // Tối ưu hóa bullet trajectory
+    bulletPhysics.accuracyBoost = 1.8;
+    hitRegistration.enhance();
+    
+    console.log("🎯 HEADSHOT PRO VIP: Đã kích hoạt chế độ headshot cực đại");
+    return "Headshot Pro VIP: Độ chính xác +180%";
+}`,
+
+            recoil: `// 🛡️ ANTI-RECOIL VIP CODE  
+function activateAntiRecoilPro() {
+    // Triệt tiêu hoàn toàn độ giật
+    weaponRecoil.eliminate();
+    sprayPattern.optimize();
+    
+    // Tối ưu hóa weapon handling
+    weaponStability.maxLevel();
+    recoilCompensation.ultra();
+    
+    console.log("🛡️ ANTI-RECOIL VIP: Đã vô hiệu hóa hoàn toàn độ giật");
+    return "Anti-Recoil VIP: Giảm giật 100%";
+}`,
+
+            fps: `// ⚡ FPS BOOST VIP CODE
+function activateFpsBoostPro() {
+    // Tối ưu hóa hiệu suất tối đa
+    graphicsOptimizer.ultraMode();
+    frameRate.unlock();
+    performanceBoost.maximum();
+    
+    // Giảm thiểu lag và stutter
+    lagReduction.enable();
+    memoryOptimizer.boost();
+    
+    console.log("⚡ FPS BOOST VIP: Đã kích hoạt chế độ FPS cực đại");
+    return "FPS Boost VIP: Tăng FPS +200%";
+}`,
+
+            audio: `// 🔊 AUDIO ENHANCE VIP CODE
+function activateAudioEnhancePro() {
+    // Khuếch đại âm thanh chiến thuật
+    footstepAudio.boost(3.0);
+    directionalAudio.precision();
+    spatialAudio.enhance();
+    
+    // Lọc nhiễu và tăng cường clarity
+    noiseReduction.advanced();
+    audioClarity.maxLevel();
+    
+    console.log("🔊 AUDIO ENHANCE VIP: Đã kích hoạt âm thanh siêu nét");
+    return "Audio Enhance VIP: Phát hiện âm thanh từ 200m";
+}`
+        };
+
+        // Phản hồi AI mẫu
+        const aiResponses = [
+            "Tôi đã phân tích vấn đề của bạn. Hãy thử kích hoạt tính năng FPS Boost để cải thiện hiệu suất game.",
+            "Để tăng độ chính xác, bạn nên sử dụng HEADSHOT PRO kết hợp với độ nhạy phù hợp.",
+            "Vấn đề kết nối có thể được giải quyết bằng PING OPTIMIZE. Tôi đề xuất kích hoạt tính năng này.",
+            "Âm thanh bước chân không rõ? Hãy thử AUDIO ENHANCE để khuếch đại âm thanh chiến thuật.",
+            "Tôi thấy bạn đang gặp vấn đề về độ giật. ANTI-RECOIL sẽ giúp bạn kiểm soát vũ khí tốt hơn.",
+            "Để tối ưu hóa trải nghiệm, tôi đề xuất sử dụng kết hợp 2-3 tính năng phù hợp với phong cách chơi của bạn."
+        ];
+
+        // Khởi tạo
+        function initialize() {
+            // Kiểm tra nếu đã đăng nhập trước đó
+            const currentUser = localStorage.getItem('giatienCurrentUser');
+            if (currentUser) {
+                const account = accounts.find(acc => acc.username === currentUser);
+                if (account) {
+                    showSystemSection(currentUser, account.isAdmin);
+                    // Khôi phục trạng thái tính năng
+                    restoreFeatureStates();
+                }
+            }
+            
+            // Cập nhật hiệu suất ban đầu
+            updatePerformanceMeter();
+            // Tải dữ liệu admin
+            loadAdminData();
+        }
+
+        // Khôi phục trạng thái tính năng
+        function restoreFeatureStates() {
+            Object.keys(featureStates).forEach(feature => {
+                if (featureStates[feature]) {
+                    const statusElement = document.querySelector(`[data-feature="${feature}"]`);
+                    if (statusElement) {
+                        statusElement.classList.remove('status-off');
+                        statusElement.classList.add('status-on');
+                        statusElement.textContent = 'BẬT';
+                    }
+                }
+            });
+        }
+
+        // Cập nhật đồng hồ hiệu suất
+        function updatePerformanceMeter() {
+            let basePerformance = 45;
+            let activeCount = 0;
+            
+            Object.keys(featureStates).forEach(feature => {
+                if (featureStates[feature]) {
+                    basePerformance += 15;
+                    activeCount++;
+                }
+            });
+            
+            const finalPerformance = Math.min(100, basePerformance);
+            performanceValue.textContent = finalPerformance + '%';
+            performanceFill.style.width = finalPerformance + '%';
+            activeFeatures.textContent = activeCount;
+            
+            if (finalPerformance >= 80) {
+                systemStatus.textContent = 'CAO';
+                systemStatus.style.color = '#6bff6b';
+            } else if (finalPerformance >= 60) {
+                systemStatus.textContent = 'TRUNG BÌNH';
+                systemStatus.style.color = '#ffb86b';
+            } else {
+                systemStatus.textContent = 'ỔN ĐỊNH';
+                systemStatus.style.color = '#a0a0a0';
+            }
+        }
+
+        // Tải dữ liệu admin
+        function loadAdminData() {
+            totalUsers.textContent = accounts.length;
+            totalKeys.textContent = vipKeys.length;
+            
+            // Tính tính năng phổ biến
+            const featureCount = {
+                headshot: 0,
+                recoil: 0,
+                fps: 0,
+                audio: 0
+            };
+            
+            Object.keys(featureStates).forEach(feature => {
+                if (featureStates[feature]) featureCount[feature]++;
+            });
+            
+            const popular = Object.keys(featureCount).reduce((a, b) => 
+                featureCount[a] > featureCount[b] ? a : b
+            );
+            
+            popularFeature.textContent = popular.toUpperCase().replace('_', ' ');
+        }
+
+        // Sự kiện đăng nhập
+        loginBtn.addEventListener('click', handleLogin);
+        registerBtn.addEventListener('click', handleRegister);
+        vipLoginBtn.addEventListener('click', handleVipLogin);
+        logoutBtn.addEventListener('click', handleLogout);
+        adminLogoutBtn.addEventListener('click', handleLogout);
+        
+        // Sự kiện chuyển section
+        supportSectionBtn.addEventListener('click', () => showSupportSection());
+        adminSectionBtn.addEventListener('click', () => showAdminSection());
+        backToSystemBtn.addEventListener('click', () => showSystemSection(currentUser, currentUserIsAdmin));
+        
+        // Sự kiện AI Support
+        askAiBtn.addEventListener('click', handleAiQuestion);
+        
+        // Sự kiện VIP Code
+        runVipCodeBtn.addEventListener('click', handleVipCode);
+        
+        // Sự kiện quên mật khẩu
+        forgotPasswordLink.addEventListener('click', showForgotPassword);
+        
+        // Sự kiện admin tabs
+        adminTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                switchAdminTab(tabId);
+            });
+        });
+        
+        // Sự kiện admin actions
+        addUserBtn.addEventListener('click', addNewUser);
+        addKeyBtn.addEventListener('click', addNewKey);
+        
+        // Sự kiện bật/tắt tính năng
+        document.querySelectorAll('.feature-status').forEach(status => {
+            status.addEventListener('click', function() {
+                const feature = this.getAttribute('data-feature');
+                
+                if (this.classList.contains('status-off')) {
+                    this.classList.remove('status-off');
+                    this.classList.add('status-on');
+                    this.textContent = 'BẬT';
+                    featureStates[feature] = true;
+                    addSystemLog(`Đã kích hoạt ${this.parentNode.parentNode.querySelector('.feature-name').textContent}`);
+                } else {
+                    this.classList.remove('status-on');
+                    this.classList.add('status-off');
+                    this.textContent = 'TẮT';
+                    featureStates[feature] = false;
+                    addSystemLog(`Đã tắt ${this.parentNode.parentNode.querySelector('.feature-name').textContent}`);
+                }
+                
+                localStorage.setItem('giatienFeatures', JSON.stringify(featureStates));
+                updatePerformanceMeter();
+            });
+        });
+
+        let currentUser = '';
+        let currentUserIsAdmin = false;
+
+        // Xử lý đăng nhập
+        function handleLogin() {
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            if (!username || !password) {
+                showMessage('Vui lòng nhập đầy đủ tài khoản và mật khẩu!', 'error');
+                return;
+            }
+            
+            const account = accounts.find(acc => acc.username === username && acc.password === password);
+            
+            if (account) {
+                currentUser = username;
+                currentUserIsAdmin = account.isAdmin || false;
+                localStorage.setItem('giatienCurrentUser', username);
+                showSystemSection(username, account.isAdmin);
+                showMessage('Đăng nhập thành công! Chào mừng đến với Gia Tiến Free Fire.', 'success');
+            } else {
+                showMessage('Tài khoản hoặc mật khẩu không đúng!', 'error');
+            }
+        }
+        
+        // Xử lý đăng ký
+        function handleRegister() {
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            if (!username || !password) {
+                showMessage('Vui lòng nhập đầy đủ tài khoản và mật khẩu!', 'error');
+                return;
+            }
+            
+            if (accounts.find(acc => acc.username === username)) {
+                showMessage('Tài khoản đã tồn tại! Vui lòng chọn tên khác.', 'error');
+                return;
+            }
+            
+            accounts.push({ username, password, isAdmin: false });
+            localStorage.setItem('giatienAccounts', JSON.stringify(accounts));
+            showMessage('Đăng ký thành công! Bạn có thể đăng nhập ngay.', 'success');
+            usernameInput.value = '';
+            passwordInput.value = '';
+        }
+        
+        // Xử lý đăng nhập VIP
+        function handleVipLogin() {
+            const vipKey = vipKeyInput.value.trim();
+            
+            if (!vipKey) {
+                showMessage('Vui lòng nhập VIP Key!', 'error');
+                return;
+            }
+            
+            if (vipKeys.includes(vipKey.toUpperCase())) {
+                currentUser = `VIP_${Math.floor(Math.random() * 10000)}`;
+                currentUserIsAdmin = false;
+                localStorage.setItem('giatienCurrentUser', currentUser);
+                showSystemSection(currentUser, false);
+                showMessage('Đăng nhập VIP thành công! Trải nghiệm tính năng cao cấp.', 'success');
+            } else {
+                showMessage('VIP Key không hợp lệ!', 'error');
+            }
+        }
+        
+        // Xử lý đăng xuất
+        function handleLogout() {
+            currentUser = '';
+            currentUserIsAdmin = false;
+            localStorage.removeItem('giatienCurrentUser');
+            showLoginSection();
+            showMessage('Đã đăng xuất thành công! Hẹn gặp lại.', 'success');
+        }
+        
+        // Xử lý câu hỏi AI
+        function handleAiQuestion() {
+            const question = aiQuestion.value.trim();
+            
+            if (!question) {
+                showMessage('Vui lòng nhập câu hỏi!', 'error');
+                return;
+            }
+            
+            // Hiển thị loading
+            aiResponse.style.display = 'block';
+            aiResponse.textContent = '🤖 AI đang phân tích câu hỏi của bạn...';
+            
+            // Giả lập xử lý AI
+            setTimeout(() => {
+                const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+                aiResponse.textContent = `💡 GỢI Ý TỪ AI:\n\n${randomResponse}\n\n💬 Câu hỏi của bạn: "${question}"`;
+                showMessage('AI đã gửi phản hồi!', 'success');
+            }, 2000);
+        }
+        
+        // Xử lý chạy code VIP
+        function handleVipCode() {
+            const selectedFeature = vipCode.value;
+            
+            if (!selectedFeature) {
+                showMessage('Vui lòng chọn tính năng VIP!', 'error');
+                return;
+            }
+            
+            vipCodeOutput.style.display = 'block';
+            vipCodeOutput.textContent = vipCodes[selectedFeature];
+            
+            // Hiệu ứng thực thi code
+            setTimeout(() => {
+                let result = '';
+                switch(selectedFeature) {
+                    case 'headshot':
+                        result = 'Headshot Pro VIP: Độ chính xác +180%';
+                        break;
+                    case 'recoil':
+                        result = 'Anti-Recoil VIP: Giảm giật 100%';
+                        break;
+                    case 'fps':
+                        result = 'FPS Boost VIP: Tăng FPS +200%';
+                        break;
+                    case 'audio':
+                        result = 'Audio Enhance VIP: Phát hiện âm thanh từ 200m';
+                        break;
+                }
+                
+                vipCodeOutput.textContent += `\n\n✅ KẾT QUẢ THỰC THI:\n${result}`;
+                showMessage('Code VIP đã được thực thi thành công!', 'success');
+            }, 1500);
+        }
+        
+        // Hiển thị section hệ thống
+        function showSystemSection(username, isAdmin) {
+            userDisplayName.textContent = username;
+            adminSectionBtn.style.display = isAdmin ? 'block' : 'none';
+            loginSection.style.display = 'none';
+            supportSection.style.display = 'none';
+            adminSection.style.display = 'none';
+            systemSection.style.display = 'block';
+        }
+        
+        // Hiển thị section hỗ trợ
+        function showSupportSection() {
+            loginSection.style.display = 'none';
+            systemSection.style.display = 'none';
+            adminSection.style.display = 'none';
+            supportSection.style.display = 'block';
+        }
+        
+        // Hiển thị section admin
+        function showAdminSection() {
+            adminDisplayName.textContent = currentUser;
+            loginSection.style.display = 'none';
+            systemSection.style.display = 'none';
+            supportSection.style.display = 'none';
+            adminSection.style.display = 'block';
+            loadUserList();
+            loadKeyList();
+        }
+        
+        // Hiển thị section đăng nhập
+        function showLoginSection() {
+            systemSection.style.display = 'none';
+            supportSection.style.display = 'none';
+            adminSection.style.display = 'none';
+            loginSection.style.display = 'block';
+            usernameInput.value = '';
+            passwordInput.value = '';
+            vipKeyInput.value = '';
+        }
+        
+        // Chuyển tab admin
+        function switchAdminTab(tabId) {
+            adminContents.forEach(content => content.classList.remove('active'));
+            adminTabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(`${tabId}-content`).classList.add('active');
+            document.querySelector(`.admin-tab[data-tab="${tabId}"]`).classList.add('active');
+        }
+        
+        // Thêm người dùng mới
+        function addNewUser() {
+            const username = newUsername.value.trim();
+            const password = newPassword.value.trim();
+            
+            if (!username || !password) {
+                showMessage('Vui lòng nhập đầy đủ thông tin!', 'error');
+                return;
+            }
+            
+            if (accounts.find(acc => acc.username === username)) {
+                showMessage('Tài khoản đã tồn tại!', 'error');
+                return;
+            }
+            
+            accounts.push({ username, password, isAdmin: false });
+            localStorage.setItem('giatienAccounts', JSON.stringify(accounts));
+            showMessage('Đã thêm người dùng thành công!', 'success');
+            newUsername.value = '';
+            newPassword.value = '';
+            loadUserList();
+            loadAdminData();
+        }
+        
+        // Thêm key mới
+        function addNewKey() {
+            const key = newKey.value.trim().toUpperCase();
+            
+            if (!key) {
+                showMessage('Vui lòng nhập key!', 'error');
+                return;
+            }
+            
+            if (vipKeys.includes(key)) {
+                showMessage('Key đã tồn tại!', 'error');
+                return;
+            }
+            
+            vipKeys.push(key);
+            localStorage.setItem('giatienVipKeys', JSON.stringify(vipKeys));
+            showMessage('Đã thêm key thành công!', 'success');
+            newKey.value = '';
+            loadKeyList();
+            loadAdminData();
+        }
+        
+        // Tải danh sách người dùng
+        function loadUserList() {
+            userList.innerHTML = '';
+            accounts.forEach(account => {
+                const userItem = document.createElement('div');
+                userItem.className = 'user-item';
+                userItem.innerHTML = `
+                    <div>
+                        <strong>${account.username}</strong>
+                        <span style="color: ${account.isAdmin ? '#9c27b0' : '#a0a0a0'}; font-size: 0.8rem;">
+                            ${account.isAdmin ? ' (Admin)' : ' (User)'}
+                        </span>
+                    </div>
+                    <div>
+                        <button class="action-btn logout-btn" onclick="deleteUser('${account.username}')">XÓA</button>
+                    </div>
+                `;
+                userList.appendChild(userItem);
+            });
+        }
+        
+        // Tải danh sách key
+        function loadKeyList() {
+            keyList.innerHTML = '';
+            vipKeys.forEach(key => {
+                const keyItem = document.createElement('div');
+                keyItem.className = 'key-item';
+                keyItem.innerHTML = `
+                    <div>${key}</div>
+                    <div>
+                        <button class="action-btn logout-btn" onclick="deleteKey('${key}')">XÓA</button>
+                    </div>
+                `;
+                keyList.appendChild(keyItem);
+            });
+        }
+        
+        // Xóa người dùng
+        function deleteUser(username) {
+            if (username === 'admin') {
+                showMessage('Không thể xóa tài khoản admin!', 'error');
+                return;
+            }
+            
+            if (confirm(`Bạn có chắc muốn xóa người dùng ${username}?`)) {
+                accounts = accounts.filter(acc => acc.username !== username);
+                localStorage.setItem('giatienAccounts', JSON.stringify(accounts));
+                showMessage('Đã xóa người dùng thành công!', 'success');
+                loadUserList();
+                loadAdminData();
+            }
+        }
+        
+        // Xóa key
+        function deleteKey(key) {
+            if (confirm(`Bạn có chắc muốn xóa key ${key}?`)) {
+                vipKeys = vipKeys.filter(k => k !== key);
+                localStorage.setItem('giatienVipKeys', JSON.stringify(vipKeys));
+                showMessage('Đã xóa key thành công!', 'success');
+                loadKeyList();
+                loadAdminData();
+            }
+        }
+        
+        // Hiển thị quên mật khẩu
+        function showForgotPassword() {
+            const username = prompt("Nhập tên tài khoản của bạn:");
+            if (!username) return;
+            
+            const account = accounts.find(acc => acc.username === username);
+            if (account) {
+                const newPassword = Math.random().toString(36).slice(-8);
+                account.password = newPassword;
+                localStorage.setItem('giatienAccounts', JSON.stringify(accounts));
+                showMessage(`Mật khẩu mới: ${newPassword} - Vui lòng đổi sau khi đăng nhập!`, 'success');
+            } else {
+                showMessage('Tài khoản không tồn tại!', 'error');
+            }
+        }
+        
+        // Thêm log hệ thống
+        function addSystemLog(message) {
+            console.log(`[Gia Tiến System] ${message}`);
+        }
+        
+        // Hiển thị thông báo
+        function showMessage(text, type) {
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Cho phép đăng nhập bằng phím Enter
+        usernameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLogin(); });
+        passwordInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLogin(); });
+        vipKeyInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleVipLogin(); });
+
+        // Khởi chạy hệ thống
+        initialize();
+    </script>
+</body>
+</html>
